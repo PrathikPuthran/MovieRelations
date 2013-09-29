@@ -16,5 +16,5 @@ Deployment instructions:
 
 
 Accessing the application:
-To access the application run hit the URL "http://hostname:8080/html/welcome.html". This show a form to enter movie names .
-After entering the movie name and you hit "submit" it will display the related movies in the order.
+To access the application run hit the URL "http://hostname:8080/html/welcome.html". This show a form to enter movie names .  
+After entering the movie name and you hit "submit" it will display the related movies in the order.  
