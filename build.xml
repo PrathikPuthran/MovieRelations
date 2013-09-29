@@ -1,0 +1,39 @@
+<project name="MovieRelation" basedir="." default="clean-build">
+	<property name="src.dir" value="src"/>
+	<property name="build.dir" value="build"/>
+	<property name="classes.dir" value="${build.dir}/classes"/>
+	<property name="war.dir" value="${build.dir}/bin"/>
+
+	<target name="clean">
+		<delete dir="${build.dir}"/>
+	</target>
+
+	<path id="classpath">
+		<fileset dir="WebContent/WEB-INF/lib" includes="**/*.jar"/>
+	</path>
+	
+	<target name="copyLib">
+		<copy todir="${war.dir}">
+			<fileset dir="lib"/>
+		</copy>
+	</target>
+
+	<target name="compile">
+		<mkdir dir="${classes.dir}"/>
+		<javac srcdir="${src.dir}" destdir="${classes.dir}">
+			<classpath refid="classpath"/>
+		</javac>
+	</target>
+	
+	<target name="war" depends="compile">
+		<mkdir dir="${war.dir}"/>
+		<war destfile="${war.dir}/movies.war" webxml="WebContent/WEB-INF/web.xml">
+			<fileset dir="src"/>
+			<lib dir="WebContent/WEB-INF/lib"/>
+			<classes dir="${classes.dir}"/>
+		</war>	
+	</target>
+	
+
+	<target name="clean-build" depends="clean,war"/>
+</project>
